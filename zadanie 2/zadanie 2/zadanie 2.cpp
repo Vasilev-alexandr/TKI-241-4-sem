@@ -17,7 +17,7 @@ int main() {
     // Проверка, что размер кратен 3
     if (L.size() % 3 != 0)
     {
-        std::cerr << "Size of list must be divisible by 3." << std::endl;
+        std::cerr << "Размер списка должен быть кратен 3." << std::endl;
         return 1;
     }
 
