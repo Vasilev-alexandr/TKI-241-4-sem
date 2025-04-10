@@ -26,11 +26,8 @@ int main() {
 
     // Сохраняем первую треть элементов во временный вектор
     std::vector<int> temp;
-    auto it = L.begin();
-    for (size_t i = 0; i < third; ++i, ++it)
-    {
-        temp.push_back(*it);
-    }
+    temp.reserve(third);
+    std::copy_n(L.begin(), third, std::back_inserter(temp));
 
     // Разворачиваем вектор, чтобы получить элементы в обратном порядке
     std::reverse(temp.begin(), temp.end());
@@ -39,9 +36,10 @@ int main() {
     L.insert(L.end(), temp.begin(), temp.end());
 
     // Вывод результата
-    for (int x : L) {
-        std::cout << x << " ";
-    }
+    std::for_each(L.begin(), L.end(), [](int x)
+        {
+            std::cout << x << " ";
+        });
     std::cout << std::endl;
 
     return 0;
