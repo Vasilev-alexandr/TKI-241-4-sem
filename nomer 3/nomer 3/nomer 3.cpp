@@ -6,21 +6,20 @@
 
 int main() {
     setlocale(LC_ALL, "RU");
-    int n;
-    std::cout << "Введите количество элементов: ";
-    std::cin >> n;
 
-    if (n < 3)
+    std::vector<int> V;
+    int value;
+
+    std::cout << "Введите целые числа (Ctrl+D чтобы закончить ввод):\n";
+    while (std::cin >> value)
+    {
+        V.push_back(value);
+    }
+
+    if (V.size() < 3)
     {
         std::cout << "Недостаточно элементов\n";
         return 0;
-    }
-
-    std::vector<int> V(n);
-    std::cout << "Введите " << n << " целых чисел:\n";
-    for (int i = 0; i < n; ++i)
-    {
-        std::cin >> V[i];
     }
 
     std::multiset<int> ms(V.begin(), V.end());
