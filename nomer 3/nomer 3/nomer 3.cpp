@@ -4,17 +4,18 @@
 #include <iterator>
 #include <algorithm>
 
-int main() {
+int main()
+{
     setlocale(LC_ALL, "RU");
 
     std::vector<int> V;
-    int value;
 
     std::cout << "Введите целые числа (Ctrl+D чтобы закончить ввод):\n";
-    while (std::cin >> value)
-    {
-        V.push_back(value);
-    }
+    std::copy(
+        std::istream_iterator<int>(std::cin), 
+        std::istream_iterator<int>(),         
+        std::back_inserter(V)                 
+    );
 
     if (V.size() < 3)
     {
@@ -27,7 +28,7 @@ int main() {
     int min_val = *std::min_element(V.begin(), V.end());
     int max_val = *std::max_element(V.begin(), V.end());
 
-    if (min_val == max_val)
+    if (min_val == max_val) 
     {
         std::cout << "Все элементы одинаковые, нечего выводить.\n";
         return 0;
